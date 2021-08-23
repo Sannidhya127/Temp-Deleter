@@ -145,12 +145,21 @@ def bootstrap():
         if hinstance <= 32:
             raise RuntimeError(ERROR(hinstance))
 
+def AddToStartUp():
+    Path = "C:\\Users\\USER\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\main.py"
+    if os.path.exists(Path) == True:
+        print("File already in startup dude, chill and Netflix!")
+    else:
+        shutil.copy("main.py", "C:\\Users\\USER\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
 
 
 
-
-bootstrap()
-del_dir = r'C:\Users\USER\AppData\Local\Temp'
-shutil.rmtree(del_dir, ignore_errors=True)
-# recreate the deleted parent dir in case it get deleted
-# os.makedirs(del_dir)
+if __name__ == '__main__':
+    bootstrap()
+    AddToStartUp()
+    del_dir = r'C:\Users\USER\AppData\Local\Temp'
+    shutil.rmtree(del_dir, ignore_errors=True)
+    print("Deleted Files")
+    print("\nULTRA SUPER IMPORTANT NOTE: Some files may not be deleted because they are being used by the system. SO, stop blaming me!")
+    # recreate the deleted parent dir in case it get deleted
+    # os.makedirs(del_dir)
